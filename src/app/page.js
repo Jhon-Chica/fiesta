@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import Image from "next/image";
 import ConfettiEffect from "../app/components/Confetti";
 import CountdownTimer from "../app/components/CountdownTimer";
@@ -6,13 +8,23 @@ import LocationIcon from "../app/components/IconLocation";
 import IconTime from "../app/components/IconTime";
 
 export default function Home() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        clearInterval(interval);
+      } else {
+        window.scrollBy(0, 1);
+      }
+    }, 30);
+  
+    return () => clearInterval(interval);
+  }, []);  
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 sm:p-12 bg-pink-100 font-[family-name:var(--font-geist-sans)]">
       <ConfettiEffect />
       
       <div id="principal">
-        <br></br>
-        <br></br>
         <p id="titulo">Mis 15 Años</p>
         <p id="nombre">Sara Lucia</p>
 
@@ -48,8 +60,6 @@ export default function Home() {
       </div>    
       <div>
 
-      <div id="mariposas"></div>
-      
       <div className="mt-8">
         <CountdownTimer />
       </div>
@@ -75,7 +85,7 @@ export default function Home() {
             <div id="icon-time">
               <IconTime />
             </div>
-          <p>8:00 PM</p>
+          <p>7:00 PM</p>
         </div>
       </div>
 

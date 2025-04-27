@@ -47,11 +47,10 @@ body {
   justify-content: center;
   padding: 20px;
   border-radius: 10px;
-
 }
 
 #titulo {
-  color: #6A2E86;
+  color: #4C3BCF;
   font-family: var(--font-monteCarlo);
   font-size: 46px;
   margin-bottom: 5px;
@@ -103,7 +102,7 @@ body {
 }
 
 #container-reloj{
-  background-color: #EDB2FF;
+  background-color: #A1E3F9;
 }
 
 .countdown{
@@ -175,25 +174,7 @@ body {
   margin-top: 0px;
 }
 
-#mariposas{
 
-    background-image: url(/mariposas.png);
-    background-size: cover;
-    background-position: right;
-    width: 90%;
-    max-width: 500px; 
-    min-height: 400px;
-    height: 90%;
-    display: flex;
-    
-    padding: 20px;
-    border-radius: 10px;
-    
-    margin-left: 10px;
-    margin-top: -500px;
-    margin-bottom: 50px;
-  
-}
 
 #top-left{
   background-image: url(/top-left.png);

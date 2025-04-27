@@ -12,7 +12,7 @@ export default function CountdownTimer() {
         year: 2025,
         month: 6,
         day: 21,
-        hours: 8,
+        hours: 7,
         minutes: 0,
         seconds: 0,
 

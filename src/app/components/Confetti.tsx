@@ -22,7 +22,7 @@ export default function ConfettiEffect() {
       <Confetti
         width={windowSize.width}
         height={windowSize.height}
-        colors={["#800080", "#AA60C8", "#D69ADE", "#EABDE6"]}
+        colors={["#A1E3F9", "#578FCA", "#3674B5"]}
         numberOfPieces={50}
         gravity={0.1}
         recycle={true}
