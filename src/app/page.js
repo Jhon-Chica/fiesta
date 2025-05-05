@@ -1,13 +1,49 @@
 "use client";
 import { useEffect } from "react";
+import { useState } from 'react';
 import Image from "next/image";
 import ConfettiEffect from "../app/components/Confetti";
 import CountdownTimer from "../app/components/CountdownTimer";
 import LordIconComponent from "../app/components/Icons";
 import LocationIcon from "../app/components/IconLocation";
 import IconTime from "../app/components/IconTime";
+import { db } from "../firebaseConfig";
+import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
+
 
 export default function Home() {
+  const [cantidad, setCantidad] = useState(1);
+  const [confirmado, setConfirmado] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+  
+    try {
+      const docRef = doc(db, 'Fiesta', 'asistencia');
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
+        const currentCantidad = docSnap.data().cantidad || 0;
+        await updateDoc(docRef, {
+          cantidad: currentCantidad + parseInt(cantidad),
+          timestamp: new Date(),
+        });
+      } else {
+        await setDoc(docRef, {
+          cantidad: parseInt(cantidad),
+          timestamp: new Date(),
+        });
+      }
+  
+      setConfirmado(true);
+    } catch (error) {
+      console.error('Error al guardar en Firebase:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const delay = 5000;
@@ -102,6 +138,40 @@ export default function Home() {
       <div id="pie-de-pagina"></div>
 
       </div>
+
+      <h2 className="text-xl font-semibold mb-4">Confirmar asistencia</h2>
+      <form onSubmit={handleSubmit}>
+        <label className="input-label input-container">
+          ¿Cuántas personas asistirán?
+          <input
+            type="number"
+            min="1"
+            value={cantidad}
+            onChange={(e) => setCantidad(e.target.value)}
+            className="custom-input"
+          />
+        </label>
+        <button
+          type="submit"
+          disabled={loading}
+          className="custom-button"
+        >
+          {loading ? 'Enviando...' : 'Confirmar'}
+        </button>
+      </form>
+
+      {confirmado && (
+        <div className="alert-overlay">
+          <div className="alert-box">
+            <span className="alert-message">
+              ¡Gracias por confirmar! Asistentes: {cantidad}
+            </span>
+            <button className="close-button" onClick={() => setConfirmado(false)}>
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
     
   );

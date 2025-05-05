@@ -233,3 +233,106 @@ body {
 #final {
   animation: bounceUp 1.5s ease-out;
 }
+
+.input-label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.custom-input {
+  width: 90%;
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 1.1rem;
+  border: 2px #A1E3F9; /* azul */
+  border-radius: 8px;
+  color: black; /* azul oscuro */
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  text-align: center;
+  background-color: #A1E3F9;
+}
+
+
+/* Línea animada */
+.input-container::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: #2563eb;
+  animation: fadeInLine 1.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+.custom-button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background-color: #A1E3F9; /* Azul */
+  border: 2px solid #A1E3F9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.custom-button:hover {
+  background-color: #A1E3F9; /* Azul más oscuro */
+  border-color: #A1E3F9;
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.custom-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.custom-button:disabled {
+  background-color: #a1c4fc;
+  border-color: #a1c4fc;
+  cursor: not-allowed;
+}
+
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que se muestra sobre otros elementos */
+}
+
+.alert-box {
+  background-color: #A1E3F9;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-message {
+  flex-grow: 1;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
