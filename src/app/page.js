@@ -8,17 +8,24 @@ import LocationIcon from "../app/components/IconLocation";
 import IconTime from "../app/components/IconTime";
 
 export default function Home() {
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        clearInterval(interval);
-      } else {
-        window.scrollBy(0, 1);
-      }
-    }, 30);
+    const delay = 5000;
   
-    return () => clearInterval(interval);
-  }, []);  
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          clearInterval(interval);
+        } else {
+          window.scrollBy(0, 1);
+        }
+      }, 30);
+    }, delay);
+  
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 sm:p-12 bg-pink-100 font-[family-name:var(--font-geist-sans)]">
@@ -30,9 +37,9 @@ export default function Home() {
 
         <div id="image" className="mt-4">
           <Image
-            src="/image.png"
+            src="/vestido2.png"
             width={220}
-            height={208}
+            height={258}
             alt="Imagen"
             
             className="w-full max-w-[90%] sm:max-w-md h-auto rounded-lg shadow-lg"

@@ -24,7 +24,7 @@ export default function LordIconComponent() {
                 src="https://cdn.lordicon.com/nfpjdyaz.json"
                 trigger="loop"
                 state="morph-open"
-                colors="primary:#3B1E54,secondary:#9B7EBD"
+                colors="primary:#16a9c7,secondary:#104891"
                 style="width: 150px; height: 150px;">
             </lord-icon>
           `,

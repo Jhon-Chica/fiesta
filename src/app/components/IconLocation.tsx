@@ -25,7 +25,7 @@ export default function LocationIcon() {
                 trigger="loop"
                 delay="2000"
                 state="hover-jump-roll"
-                colors="primary:#3B1E54,secondary:#9B7EBD"
+                colors="primary:#16a9c7,secondary:#104891"
                 style="width:50px;height:50px">
             </lord-icon>
                 `,

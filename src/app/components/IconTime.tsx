@@ -24,7 +24,7 @@ export default function IconTime() {
                 src="https://cdn.lordicon.com/twpfmtiv.json"
                 trigger="loop"
                 stroke="bold"
-                colors="primary:#3B1E54,secondary:#9B7EBD"
+                colors="primary:#16a9c7,secondary:#104891"
                 style="width:50px;height:50px">
             </lord-icon>
                 `,
