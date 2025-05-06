@@ -12,9 +12,17 @@ import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 
 
 export default function Home() {
-  const [cantidad, setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState(0);
   const [confirmado, setConfirmado] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const incrementar = () => {
+    setCantidad((prev) => Math.max(0, prev + 1));
+  };
+
+  const decrementar = () => {
+    setCantidad((prev) => Math.max(0, prev - 1));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -142,14 +150,17 @@ export default function Home() {
       <h2 className="text-xl font-semibold mb-4">Confirmar asistencia</h2>
       <form onSubmit={handleSubmit}>
         <label className="input-label input-container">
-          ¿Cuántas personas asistirán?
-          <input
-            type="number"
-            min="1"
-            value={cantidad}
-            onChange={(e) => setCantidad(e.target.value)}
-            className="custom-input"
-          />
+          Por favor indica cuantas personas van a asistir
+          <br></br>
+          <button type="button" className="button-label" onClick={decrementar}>-</button>
+            <input
+              type="number"
+              value={cantidad}
+              onChange={(e) => setCantidad(Number(e.target.value))}
+              className="custom-input"
+              style={{ textAlign: 'center', width: 'auto' }}
+            />
+          <button type="button" className="button-label" onClick={incrementar}>+</button>
         </label>
         <button
           type="submit"
